@@ -1,0 +1,12 @@
+{
+  "backendStyleSuiteApp": {
+    "EstadoCitaEnum": {
+      "null": "",
+      "PENDIENTE": "PENDIENTE",
+      "CONFIRMADA": "CONFIRMADA",
+      "CANCELADA": "CANCELADA",
+      "PAGADA": "PAGADA",
+      "OTRO": "OTRO"
+    }
+  }
+}

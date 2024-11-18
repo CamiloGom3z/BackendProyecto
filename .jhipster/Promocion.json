@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20241109023316"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "porcentajeDescuento",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "tipoPromocion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "establecimientoId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "productoId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "servicioId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Promocion",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,21 @@
+{
+  "annotations": {
+    "changelogDate": "20241109023308"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "establecimientoId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "CategoriaProducto",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

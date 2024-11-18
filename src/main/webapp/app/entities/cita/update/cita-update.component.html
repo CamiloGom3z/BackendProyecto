@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cita-heading" data-cy="CitaCreateUpdateHeading" jhiTranslate="backendStyleSuiteApp.cita.home.createOrEditLabel">
+        Create or edit a Cita
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="backendStyleSuiteApp.cita.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaCita" jhiTranslate="backendStyleSuiteApp.cita.fechaCita">Fecha Cita</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaCita"
+              data-cy="fechaCita"
+              type="datetime-local"
+              class="form-control"
+              name="fechaCita"
+              formControlName="fechaCita"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaFinCita" jhiTranslate="backendStyleSuiteApp.cita.fechaFinCita">Fecha Fin Cita</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaFinCita"
+              data-cy="fechaFinCita"
+              type="datetime-local"
+              class="form-control"
+              name="fechaFinCita"
+              formControlName="fechaFinCita"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_estado" jhiTranslate="backendStyleSuiteApp.cita.estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'backendStyleSuiteApp.EstadoCitaEnum.null' | translate }}</option>
+            @for (estadoCitaEnum of estadoCitaEnumValues; track $index) {
+              <option [value]="estadoCitaEnum">{{ 'backendStyleSuiteApp.EstadoCitaEnum.' + estadoCitaEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_personaId" jhiTranslate="backendStyleSuiteApp.cita.personaId">Persona Id</label>
+          <input type="number" class="form-control" name="personaId" id="field_personaId" data-cy="personaId" formControlName="personaId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_establecimientoId" jhiTranslate="backendStyleSuiteApp.cita.establecimientoId"
+            >Establecimiento Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="establecimientoId"
+            id="field_establecimientoId"
+            data-cy="establecimientoId"
+            formControlName="establecimientoId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_servicioId" jhiTranslate="backendStyleSuiteApp.cita.servicioId">Servicio Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="servicioId"
+            id="field_servicioId"
+            data-cy="servicioId"
+            formControlName="servicioId"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

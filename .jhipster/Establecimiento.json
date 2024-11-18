@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20241109023311"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "correoElectronico",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlImg",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Establecimiento",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

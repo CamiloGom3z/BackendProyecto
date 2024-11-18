@@ -1,0 +1,150 @@
+<div>
+  <h2 id="page-heading" data-cy="PromocionHeading">
+    <span jhiTranslate="backendStyleSuiteApp.promocion.home.title">Promocions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="backendStyleSuiteApp.promocion.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-promocion"
+        [routerLink]="['/promocion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="backendStyleSuiteApp.promocion.home.createLabel">Create a new Promocion</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (promocions?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="backendStyleSuiteApp.promocion.home.notFound">No Promocions found</span>
+    </div>
+  }
+
+  @if (promocions && promocions.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombre">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.nombre">Nombre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descripcion">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.descripcion">Descripcion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="porcentajeDescuento">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.porcentajeDescuento">Porcentaje Descuento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaInicio">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.fechaInicio">Fecha Inicio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaFin">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.fechaFin">Fecha Fin</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoPromocion">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.tipoPromocion">Tipo Promocion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="establecimientoId">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.establecimientoId">Establecimiento Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productoId">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.productoId">Producto Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="servicioId">
+              <div class="d-flex">
+                <span jhiTranslate="backendStyleSuiteApp.promocion.servicioId">Servicio Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (promocion of promocions; track trackId(promocion)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/promocion', promocion.id, 'view']">{{ promocion.id }}</a>
+              </td>
+              <td>{{ promocion.nombre }}</td>
+              <td>{{ promocion.descripcion }}</td>
+              <td>{{ promocion.porcentajeDescuento }}</td>
+              <td>{{ promocion.fechaInicio | formatMediumDatetime }}</td>
+              <td>{{ promocion.fechaFin | formatMediumDatetime }}</td>
+              <td>{{ promocion.tipoPromocion }}</td>
+              <td>{{ promocion.establecimientoId }}</td>
+              <td>{{ promocion.productoId }}</td>
+              <td>{{ promocion.servicioId }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/promocion', promocion.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/promocion', promocion.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(promocion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

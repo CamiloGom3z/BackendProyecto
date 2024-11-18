@@ -1,0 +1,99 @@
+enum MetodoPagoEnum {
+    EFECTIVO,
+    TARJETA,
+    TRANSFERENCIA,
+    OTRO
+}
+
+enum EstadoCitaEnum {
+    PENDIENTE,
+    CONFIRMADA,
+    CANCELADA,
+    PAGADA,
+    OTRO
+}
+
+entity Persona {
+    nombre String
+    apellido String
+    urlImg String
+    userId Long
+}
+
+entity Empleado {
+    nombre String
+    apellido String
+    cargo String
+    salario Double
+    establecimientoId Long // ID del Establecimiento donde trabaja el empleado
+}
+
+entity Cita {
+    fechaCita Instant
+    fechaFinCita Instant
+    estado EstadoCitaEnum
+    personaId Long // ID de la Persona (cliente)
+    establecimientoId Long // ID del Establecimiento
+    servicioId Long
+}
+
+entity Servicios {
+    valorServicio BigDecimal
+    tipoServicio String
+    descripcion String
+    establecimientoId Long // ID del Establecimiento
+}
+
+entity Establecimiento {
+    nombre String
+    direccion String
+    telefono String
+    correoElectronico String
+    urlImg String
+    userId Long
+}
+
+entity Producto {
+    nombre String
+    descripcion String
+    precio BigDecimal
+    cantidad Integer
+    urlImg String
+    categoriaProductoId Long // ID de CategoriaProducto
+    establecimientoId Long // ID del Establecimiento
+}
+
+entity CategoriaProducto {
+    nombre String
+    establecimientoId Long
+}
+
+entity GaleriaImagen {
+    nombre String
+    descripcion String
+    urlImagen String
+    establecimientoId Long
+}
+
+entity Promocion {
+    nombre String
+    descripcion String
+    porcentajeDescuento BigDecimal
+    fechaInicio Instant
+    fechaFin Instant
+    tipoPromocion String
+    establecimientoId Long // ID del Establecimiento
+    productoId Long
+    servicioId Long
+}
+
+entity Pago {
+    monto BigDecimal
+    fechaPago Instant
+    metodoPago MetodoPagoEnum
+    estado String
+    citaId Long // ID de Cita
+}
+
+dto * with mapstruct
+service all with serviceImpl

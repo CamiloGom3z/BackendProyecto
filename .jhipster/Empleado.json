@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20241109023310"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cargo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "salario",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "establecimientoId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Empleado",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

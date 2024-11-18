@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (cita(); as citaRef) {
+      <div>
+        <h2 data-cy="citaDetailsHeading"><span jhiTranslate="backendStyleSuiteApp.cita.detail.title">Cita</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ citaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.cita.fechaCita">Fecha Cita</span></dt>
+          <dd>
+            <span>{{ citaRef.fechaCita | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.cita.fechaFinCita">Fecha Fin Cita</span></dt>
+          <dd>
+            <span>{{ citaRef.fechaFinCita | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.cita.estado">Estado</span></dt>
+          <dd>
+            <span [jhiTranslate]="'backendStyleSuiteApp.EstadoCitaEnum.' + (citaRef.estado ?? 'null')">{{
+              { null: '', PENDIENTE: 'PENDIENTE', CONFIRMADA: 'CONFIRMADA', CANCELADA: 'CANCELADA', PAGADA: 'PAGADA', OTRO: 'OTRO' }[
+                citaRef.estado ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.cita.personaId">Persona Id</span></dt>
+          <dd>
+            <span>{{ citaRef.personaId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.cita.establecimientoId">Establecimiento Id</span></dt>
+          <dd>
+            <span>{{ citaRef.establecimientoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.cita.servicioId">Servicio Id</span></dt>
+          <dd>
+            <span>{{ citaRef.servicioId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cita', citaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

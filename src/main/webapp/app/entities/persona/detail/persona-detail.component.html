@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (persona(); as personaRef) {
+      <div>
+        <h2 data-cy="personaDetailsHeading"><span jhiTranslate="backendStyleSuiteApp.persona.detail.title">Persona</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ personaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.persona.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ personaRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.persona.apellido">Apellido</span></dt>
+          <dd>
+            <span>{{ personaRef.apellido }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.persona.urlImg">Url Img</span></dt>
+          <dd>
+            <span>{{ personaRef.urlImg }}</span>
+          </dd>
+          <dt><span jhiTranslate="backendStyleSuiteApp.persona.userId">User Id</span></dt>
+          <dd>
+            <span>{{ personaRef.userId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/persona', personaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

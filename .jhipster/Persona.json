@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20241109023314"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlImg",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Persona",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

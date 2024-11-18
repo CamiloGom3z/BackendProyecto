@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20241109023312"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlImagen",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "establecimientoId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "GaleriaImagen",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

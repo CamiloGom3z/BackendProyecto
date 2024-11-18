@@ -1,0 +1,153 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-promocion-heading"
+        data-cy="PromocionCreateUpdateHeading"
+        jhiTranslate="backendStyleSuiteApp.promocion.home.createOrEditLabel"
+      >
+        Create or edit a Promocion
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="backendStyleSuiteApp.promocion.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="backendStyleSuiteApp.promocion.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_descripcion" jhiTranslate="backendStyleSuiteApp.promocion.descripcion">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_porcentajeDescuento" jhiTranslate="backendStyleSuiteApp.promocion.porcentajeDescuento"
+            >Porcentaje Descuento</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="porcentajeDescuento"
+            id="field_porcentajeDescuento"
+            data-cy="porcentajeDescuento"
+            formControlName="porcentajeDescuento"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaInicio" jhiTranslate="backendStyleSuiteApp.promocion.fechaInicio">Fecha Inicio</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaInicio"
+              data-cy="fechaInicio"
+              type="datetime-local"
+              class="form-control"
+              name="fechaInicio"
+              formControlName="fechaInicio"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaFin" jhiTranslate="backendStyleSuiteApp.promocion.fechaFin">Fecha Fin</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaFin"
+              data-cy="fechaFin"
+              type="datetime-local"
+              class="form-control"
+              name="fechaFin"
+              formControlName="fechaFin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tipoPromocion" jhiTranslate="backendStyleSuiteApp.promocion.tipoPromocion"
+            >Tipo Promocion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="tipoPromocion"
+            id="field_tipoPromocion"
+            data-cy="tipoPromocion"
+            formControlName="tipoPromocion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_establecimientoId" jhiTranslate="backendStyleSuiteApp.promocion.establecimientoId"
+            >Establecimiento Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="establecimientoId"
+            id="field_establecimientoId"
+            data-cy="establecimientoId"
+            formControlName="establecimientoId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productoId" jhiTranslate="backendStyleSuiteApp.promocion.productoId">Producto Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="productoId"
+            id="field_productoId"
+            data-cy="productoId"
+            formControlName="productoId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_servicioId" jhiTranslate="backendStyleSuiteApp.promocion.servicioId">Servicio Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="servicioId"
+            id="field_servicioId"
+            data-cy="servicioId"
+            formControlName="servicioId"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
